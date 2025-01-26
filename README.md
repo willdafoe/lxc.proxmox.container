@@ -29,7 +29,6 @@ Welcome to the **Unifi Controller on Proxmox** project! This repository helps yo
 
 - A working **Proxmox** host with API access enabled.
 - **Pulumi CLI** installed ([Get Pulumi](https://www.pulumi.com/docs/get-started/install/)).
-- **Ansible** installed on your management machine.
 - **Node.js** installed (required for Pulumi).
 - SSH keys set up for your Proxmox host and container access.
 
@@ -65,25 +64,22 @@ cd unifi-controller-proxmox
    pulumi config set container:storage <storage-pool-name>
    ```
 
-### 4. Deploy the LXC Container
+### 4. Deploy and Configure the LXC Container
 
-Run the Pulumi stack to deploy your container:
+Run the Pulumi stack to deploy your container and execute the Ansible playbook automatically:
 
 ```bash
 pulumi up
 ```
 
-### 5. Configure the Container with Ansible
+The Pulumi script will:
+- Deploy the LXC container.
+- Copy the necessary Ansible playbook to the container.
+- Execute the Ansible playbook within the container to apply security and configuration settings.
 
-Once the container is created, apply the Ansible playbook for final configurations:
+### 5. Access the Unifi Controller
 
-```bash
-ansible-playbook -i inventory.ini playbooks/harden_and_deploy_unifi.yml
-```
-
-### 6. Access the Unifi Controller
-
-After the playbook finishes, the Unifi Controller should be accessible at:
+After the deployment finishes, the Unifi Controller should be accessible at:
 
 ```
 https://<container-ip>:8443
@@ -139,7 +135,7 @@ The following configurations are applied for enhanced security:
 By combining Pulumi and Ansible, you get the best of both worlds:
 
 - **Pulumi** handles the infrastructure creation with modern programming languages.
-- **Ansible** fine-tunes and secures the environment post-deployment.
+- **Ansible** fine-tunes and secures the environment post-deployment, fully automated via Pulumi.
 
 ---
 

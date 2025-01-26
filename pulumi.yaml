@@ -1,0 +1,30 @@
+name: unifi-controller-proxmox
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+
+configuration:
+  description: Configuration for deploying an LXC container on Proxmox with Ansible hardening
+
+variables:
+  proxmox:host:
+    description: The Proxmox host URL (e.g., https://192.168.1.100:8006)
+    type: string
+  proxmox:username:
+    description: Proxmox username with API access (e.g., root@pam)
+    type: string
+  proxmox:password:
+    description: Proxmox password (stored securely)
+    type: secret
+  container:memory:
+    description: Memory allocation for the LXC container in MB (default: 2048)
+    type: number
+    default: 2048
+  container:cpu:
+    description: Number of CPU cores for the LXC container (default: 2)
+    type: number
+    default: 2
+  container:storage:
+    description: Storage pool name for the LXC container
+    type: string

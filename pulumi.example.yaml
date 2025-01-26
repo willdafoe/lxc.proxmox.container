@@ -1,0 +1,8 @@
+config:
+  proxmox:host: "https://192.168.1.100:8006"
+  proxmox:username: "root@pam"
+  proxmox:password:
+    secure: "<encrypted-password>"
+  container:memory: 2048
+  container:cpu: 2
+  container:storage: "local-lvm"

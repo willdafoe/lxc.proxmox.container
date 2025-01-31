@@ -3,9 +3,10 @@
 set -e
 
 # Define variables
-INVENTORY="inventory.ini"
-SITE_PLAYBOOK="playbooks/site.yml"
-VERIFY_PLAYBOOK="playbooks/verify_hardening.yml"
+ROOT_DIR=$(dirname "$0")
+INVENTORY="$ROOT_DIR/inventory.ini"
+SITE_PLAYBOOK="$ROOT_DIR/playbooks/site.yml"
+VERIFY_PLAYBOOK="$ROOT_DIR/playbooks/verify_hardening.yml"
 
 # Function to cleanup the deployment
 cleanup() {
@@ -27,6 +28,10 @@ if ! command -v ansible-playbook &> /dev/null; then
     echo "[ERROR] Ansible is not installed. Please install it and try again."
     exit 1
 fi
+
+# Print project tree
+echo "[INFO] Project directory structure:"
+tree "$ROOT_DIR"
 
 # Run the deployment playbook
 echo "[INFO] Running Ansible deployment..."

@@ -3,10 +3,11 @@
 set -e
 
 # Define variables
-ROOT_DIR=$(dirname "$0")
-INVENTORY="$ROOT_DIR/inventory.ini"
-SITE_PLAYBOOK="$ROOT_DIR/playbooks/site.yml"
-VERIFY_PLAYBOOK="$ROOT_DIR/playbooks/verify_hardening.yml"
+ROOT_DIR=$(dirname "$(realpath "$0")")
+ANSIBLE_DIR="$ROOT_DIR/ansible"
+INVENTORY="$ANSIBLE_DIR/inventory.ini"
+SITE_PLAYBOOK="$ANSIBLE_DIR/playbooks/site.yml"
+VERIFY_PLAYBOOK="$ANSIBLE_DIR/playbooks/verify_hardening.yml"
 
 # Function to cleanup the deployment
 cleanup() {
@@ -32,6 +33,12 @@ fi
 # Print project tree
 echo "[INFO] Project directory structure:"
 tree "$ROOT_DIR"
+
+# Ensure playbook exists
+if [[ ! -f "$SITE_PLAYBOOK" ]]; then
+    echo "[ERROR] Playbook $SITE_PLAYBOOK not found. Check your paths."
+    exit 1
+fi
 
 # Run the deployment playbook
 echo "[INFO] Running Ansible deployment..."

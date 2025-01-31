@@ -1,0 +1,5 @@
+- name: Deploy and Configure Unifi Controller
+  hosts: all
+  roles:
+    - common
+    - unifi_controller

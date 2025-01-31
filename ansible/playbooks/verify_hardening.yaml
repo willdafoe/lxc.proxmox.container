@@ -1,0 +1,11 @@
+- name: Verify hardening configurations
+  hosts: all
+  tasks:
+    - name: Check SSH configuration
+      ansible.builtin.command:
+        cmd: grep -E '^PermitRootLogin no' /etc/ssh/sshd_config
+      register: ssh_config_check
+    - name: Fail if SSH configuration is not secure
+      ansible.builtin.fail:
+        msg: "Root login over SSH is enabled!"
+      when: ssh_config_check.rc != 0

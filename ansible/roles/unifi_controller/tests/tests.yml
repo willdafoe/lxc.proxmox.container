@@ -1,0 +1,4 @@
+- name: Test Unifi Controller role
+  hosts: all
+  roles:
+    - unifi_controller

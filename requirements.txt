@@ -1,0 +1,5 @@
+pulumi==3.147.0
+pulumi-proxmoxve==6.18.1
+ansible==8.5.0
+requests==2.31.0
+python-dotenv==1.0.1

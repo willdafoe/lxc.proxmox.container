@@ -5,7 +5,7 @@ on:
     paths:
       - "packer/**"
     branches:
-      - main
+      - feature/hashicorp
   workflow_dispatch:
 
 jobs:

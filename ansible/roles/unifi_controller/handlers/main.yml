@@ -1,4 +1,0 @@
-- name: Restart Unifi Controller
-  ansible.builtin.service:
-    name: unifi
-    state: restarted

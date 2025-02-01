@@ -1,6 +1,0 @@
-# Pulumi
-pulumi.homelab.yaml
-
-# Python
-**/venv
-**__pycache__

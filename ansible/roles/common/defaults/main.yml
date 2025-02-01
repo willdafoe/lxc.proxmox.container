@@ -1,2 +1,0 @@
-ssh_hardening:
-  PermitRootLogin: "no"

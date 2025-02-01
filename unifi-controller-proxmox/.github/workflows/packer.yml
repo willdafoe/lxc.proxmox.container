@@ -1,0 +1,27 @@
+name: "Packer Build - Proxmox LXC"
+
+on:
+  push:
+    paths:
+      - "packer/**"
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Packer Build
+        env:
+          PROXMOX_HOST: ${{ secrets.PROXMOX_HOST }}
+          PROXMOX_API_TOKEN_ID: ${{ secrets.PROXMOX_API_TOKEN_ID }}
+          PROXMOX_API_TOKEN_SECRET: ${{ secrets.PROXMOX_API_TOKEN_SECRET }}
+          PROXMOX_STORAGE_POOL: ${{ secrets.PROXMOX_STORAGE_POOL }}
+        run: |
+          cd packer
+          packer init .
+          packer build ubuntu2004.pkr.hcl

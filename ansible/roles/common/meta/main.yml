@@ -1,6 +1,0 @@
-galaxy_info:
-  role_name: common
-  author: YourName
-  description: Common tasks for shared configurations
-  license: MIT
-dependencies: []

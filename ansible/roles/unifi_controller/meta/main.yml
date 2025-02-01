@@ -1,6 +1,0 @@
-galaxy_info:
-  role_name: unifi_controller
-  author: YourName
-  description: Role for deploying and configuring Unifi Controller
-  license: MIT
-dependencies: []

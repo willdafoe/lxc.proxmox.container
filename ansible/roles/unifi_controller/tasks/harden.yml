@@ -1,5 +1,0 @@
-- name: Configure UFW firewall
-  ansible.builtin.ufw:
-    rule: allow
-    port: [8443, 8080]
-    proto: tcp

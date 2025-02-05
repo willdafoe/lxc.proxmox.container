@@ -4,8 +4,8 @@
 set -e
 
 # Define repository structure
-REPO_DIR="$HOME/lxc.proxmox.unifi.controller"
-PACKER_DIR="$REPO_DIR/unifi-controller-proxmox/packer"
+REPO_DIR="$HOME/lxc.proxmox.unifi.controller/unifi-controller-proxmox"
+PACKER_DIR="$REPO_DIR/packer"
 PACKER_TEMPLATE="$PACKER_DIR/ubuntu2004.pkr.hcl"
 PACKER_VARS_FILE="$PACKER_DIR/ubuntu2004.pkrvars.hcl"
 
